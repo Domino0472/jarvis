@@ -12,7 +12,7 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 def speak(text):
     # POPRAWKA 1: Używamy sys.executable, aby korzystać z python z venv, a nie systemowego
     piper_cmd = [sys.executable, '-m', 'piper', '--model', 'pl_PL-gosia-medium.onnx', '--output-raw']
-    aplay_cmd = ['aplay', '-f', 'S16_LE', '-t', 'raw', '-']
+    aplay_cmd = ['aplay', '-r', '22050', '-f', 'S16_LE', '-t', 'raw', '-']
 
     try:
         p1 = subprocess.Popen(piper_cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
